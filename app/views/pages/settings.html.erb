@@ -1,0 +1,15 @@
+<div class="pt-24 pb-12 px-2 sm:px-0">
+  <%= link_to @infusionsoft_auth_url, class: 'flex items-center justify-center px-4 py-2 border border-transparent rounded-md text-white bg-green-700 my-2' do %>
+    <i class="far fa-shield mr-3"></i>
+    Authenticate with Infusionsoft
+  <% end %>
+
+  <%= link_to refresh_path, class: 'flex items-center justify-center px-4 py-2 border border-transparent rounded-md text-white bg-green-700 my-2' do %>
+    <i class="far fa-sync mr-3"></i>
+    Refresh Infuionsoft Access Token
+  <% end %>
+
+  <%= tag.pre "access_token: #{ @access_token }", class: 'code-block' %>
+  <%= tag.pre "expires_in: #{ @expires_in }", class: 'code-block' %>
+  <%= tag.pre "refresh_token: #{ @refresh_token }", class: 'code-block' %>
+</div>

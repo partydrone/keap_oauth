@@ -6,6 +6,11 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should get settings" do
+    get settings_url
+    assert_response :success
+  end
+
   test "should get up" do
     get up_url
     assert_response :success

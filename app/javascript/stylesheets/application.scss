@@ -2,3 +2,9 @@
  * Your custom CSS goes here but before adding a lot of CSS check this out:
  *   https://tailwindcss.com/docs/extracting-components
 */
+
+@layer components {
+  .code-block {
+    @apply my-5 p-5 rounded-md bg-gray-900 text-gray-100 overflow-x-auto;
+  }
+}

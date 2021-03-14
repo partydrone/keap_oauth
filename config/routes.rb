@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   scope controller: :pages do
+    get '/auth/:provider/callback', action: :auth
+    get :refresh
+    get :settings
     get :up
   end
 

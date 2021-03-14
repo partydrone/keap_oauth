@@ -1,4 +1,4 @@
-FROM ruby:2.7.2-slim-buster AS webpacker
+FROM ruby:3.0.0-slim-buster AS webpacker
 LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
 WORKDIR /app
@@ -25,9 +25,9 @@ RUN yarn install
 ARG RAILS_ENV="production"
 ARG NODE_ENV="production"
 ENV RAILS_ENV="${RAILS_ENV}" \
-    NODE_ENV="${NODE_ENV}" \
-    PATH="${PATH}:/home/ruby/.local/bin" \
-    USER="ruby"
+  NODE_ENV="${NODE_ENV}" \
+  PATH="${PATH}:/home/ruby/.local/bin" \
+  USER="ruby"
 
 COPY --chown=ruby:ruby . .
 
@@ -38,7 +38,7 @@ CMD ["bash"]
 
 #
 
-FROM ruby:2.7.2-slim-buster AS app
+FROM ruby:3.0.0-slim-buster AS app
 LABEL maintainer="Nick Janetakis <nick.janetakis@gmail.com>"
 
 WORKDIR /app
@@ -59,8 +59,8 @@ RUN chmod 0755 bin/* && bundle install --jobs $(nproc)
 
 ARG RAILS_ENV="production"
 ENV RAILS_ENV="${RAILS_ENV}" \
-    PATH="${PATH}:/home/ruby/.local/bin" \
-    USER="ruby"
+  PATH="${PATH}:/home/ruby/.local/bin" \
+  USER="ruby"
 
 COPY --chown=ruby:ruby --from=webpacker /app/public /public
 COPY --chown=ruby:ruby . .
